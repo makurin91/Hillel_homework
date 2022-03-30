@@ -13,10 +13,9 @@ print(uniq_numb)
 """
 1.2) вывести 3 наибольших числа из исходного массива 
 """
-max_one = max(numbers)
-max_two = max(x for x in numbers if x != max_one)
-max_tree = max(y for y in numbers if y != max_one if y != max_two)
-print(max_one, max_two, max_tree)
+max_digits = sorted(uniq_numb, reverse=True)
+print(max_digits[:3])
+
 """
 1.3) вывести индекс минимального элемента массива
 """
@@ -49,8 +48,6 @@ for k in dict_one:
 4) Сгенерировать dict() из списка ключей ниже по формуле (key : key* key)
 """
 keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-generated_dict = {}
-for i in keys:
-    generated_dict[i] = i * i
+generated_dict = {t: t*t for t in keys}
 print(end='\n')
 print(generated_dict)
