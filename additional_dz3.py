@@ -29,10 +29,12 @@ data = [1, 2, 3, 4, 5, 6]
 def some_function(array, n):
     if n in range(array[0], array[-1]):
         return array[n] ** n
+    elif array[n - 1] is len(array):
+        return array[n - 1] ** n
     return -1
 
 
-print(some_function(data, 4))
+print(some_function(data, 6))
 
 """
 10) Есть строка со словами и числами, разделенными пробелами (один пробел между словами и/или числами).
@@ -44,7 +46,7 @@ some_string = 'hello 1 one two three 15 world'
 
 
 def check_matches(text):
-    match = re.search(r'\s+'.join([r'[^\d\s]+']*3), text)
+    match = re.search(r'\s+'.join([r'[^\d\s]+'] * 3), text)
     return 'True' if bool(match) is True else 'False'
 
 
