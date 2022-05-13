@@ -1,6 +1,5 @@
 from HomeWork_9.BaseApp import BasePage
 from selenium.webdriver.common.by import By
-from selenium.webdriver import Keys
 
 
 class MyLocators:
