@@ -1,0 +1,21 @@
+{
+  "simple_user": {
+    "username": "test_mak_1",
+    "password": "Aa123456!",
+    "first_name": "AutoFName",
+    "last_name": "AutoLName",
+    "email": "auto@team.ua",
+    "new_username": "test_mak_update"
+  },
+  "admin_user": {
+    "username": "admin",
+    "password": "admin123"
+  },
+  "resources": {
+    "user_url": "https://www.aqa.science/",
+    "admin_url": "https://www.aqa.science/admin/"
+  },
+  "api": {
+    "user_path": "https://www.aqa.science/users/"
+  }
+}
