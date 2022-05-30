@@ -1,33 +1,47 @@
 import time
 import pytest
 from HomeWork_9.common_actions import CommonActions
-from HomeWork_9.LocatorsApp import ScienceActions
-from HomeWork_9.Api import ApiValidation
+from HomeWork_9.locators_app import ScienceActions
+from HomeWork_9.api import ApiValidation
+import logging
 
 api = ApiValidation
+LOGGER = logging.getLogger(__name__)
 
 
 @pytest.mark.crud
 @pytest.mark.usefixtures('read_data_file')
 class TestCrudUser:
 
+    # def setup(self):
+    #     api = ApiValidation
+    #     check_user_result = api.check_user_exists(self.USER_NAME, self.USERS_ENDPOINT, self.ADM_USERNAME,
+    #                                               self.ADM_PASSWORD)
+    #     return check_user_result
+
+    @pytest.mark.cd
     @pytest.mark.usefixtures('docker')
     def test_create_user(self, driver_setup):
         check_user_result = api.check_user_exists(self.USER_NAME, self.USERS_ENDPOINT, self.ADM_USERNAME,
                                                   self.ADM_PASSWORD)
-        assert check_user_result is False, 'This user already exists'
+        assert check_user_result is False, LOGGER.error('This user already exists')
         driver = driver_setup
         ca = CommonActions()
+        LOGGER.info('Login to the admin panel')
         ca.login_to_the_resource_as_admin(driver, self.ADMIN_URL, self.ADM_USERNAME, self.ADM_PASSWORD)
         science_actions = ScienceActions(driver)
+        LOGGER.info('Click "Add user" button and enter credentials of the new user')
         science_actions.click_add_user_button()
         science_actions.enter_username_for_creating_user(self.USER_NAME)
         science_actions.enter_password_for_creating_user(self.USER_PASSWORD)
         science_actions.enter_confirm_password_for_creating_user(self.USER_PASSWORD)
+        LOGGER.info('Click "save" button')
         science_actions.click_save_creating_user()
         check_message = science_actions.get_text_from_success_message()
         time.sleep(3)
-        assert check_message == f'The user “{self.USER_NAME}” was added successfully. You may edit it again below.'
+        LOGGER.info('Check the message about creating user')
+        assert check_message == f'The user “{self.USER_NAME}” was added successfully. You may edit it again below.',\
+            LOGGER.error(f'message "{check_message}" is not shown or {self.USER_NAME} is wrong')
 
     @pytest.mark.usefixtures('docker')
     def test_read_user(self, driver_setup):
@@ -71,6 +85,7 @@ class TestCrudUser:
         time.sleep(0.5)
         assert check_user_result is True, 'This user does not exist'
 
+    @pytest.mark.cd
     @pytest.mark.usefixtures('docker')
     def test_delete_user(self, driver_setup):
         check_user_result = api.check_user_exists(self.USER_NAME, self.USERS_ENDPOINT, self.ADM_USERNAME,
