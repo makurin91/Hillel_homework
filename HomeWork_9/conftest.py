@@ -13,6 +13,7 @@ def docker():
     """
     os.system("docker run -d --name selenium_chrome -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm "
               "selenium/standalone-chrome-debug")
+    time.sleep(5)
     yield
     os.system("docker rm -f selenium_chrome")
 
@@ -28,7 +29,6 @@ def driver_setup(request):
     options.add_argument('--ignore-ssl-errors=yes')
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--start-maximized')
-    time.sleep(5)
     driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub', options=options, )
     driver.implicitly_wait(3)
 
