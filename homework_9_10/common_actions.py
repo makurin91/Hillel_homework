@@ -1,4 +1,4 @@
-from HomeWork_9.locators_app import ScienceActions
+from homework_9_10.locators_app import ScienceActions
 
 
 class CommonActions:

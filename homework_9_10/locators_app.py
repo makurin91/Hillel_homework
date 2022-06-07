@@ -1,4 +1,4 @@
-from HomeWork_9.base_app import BasePage
+from homework_9_10.base_app import BasePage
 from selenium.webdriver.common.by import By
 
 

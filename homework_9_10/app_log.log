@@ -1,0 +1,4 @@
+2022-05-31 16:40:29 [    INFO] Created user with username test_mak_1 (test_api_crud_user.py:30)
+2022-05-31 16:40:30 [    INFO] Read user with ID - 527/ (test_api_crud_user.py:38)
+2022-05-31 16:40:31 [    INFO] Update the name "test_mak_1" on the "test_mak_update" (test_api_crud_user.py:45)
+2022-05-31 16:40:33 [    INFO] Delete the user with name test_mak_1 (test_api_crud_user.py:53)

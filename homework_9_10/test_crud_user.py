@@ -1,8 +1,8 @@
 import time
 import pytest
-from HomeWork_9.common_actions import CommonActions
-from HomeWork_9.locators_app import ScienceActions
-from HomeWork_9.api import ApiValidation
+from homework_9_10.common_actions import CommonActions
+from homework_9_10.locators_app import ScienceActions
+from homework_9_10.checker import ApiValidation
 import logging
 
 api = ApiValidation
